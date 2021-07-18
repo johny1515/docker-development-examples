@@ -1,1 +1,15 @@
-FROM node:12.4.0-alpine
+FROM node:12.4.0-alpine as dev
+
+RUN mkdir /app/
+WORKDIR /app/
+
+COPY ./src/package.json /app/package.json
+RUN npm install
+
+COPY ./src/ /app/
+
+########### START NEW IMAGE #################
+
+FROM dev as prod
+
+CMD node .

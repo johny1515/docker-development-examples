@@ -6,11 +6,13 @@ services:
         # dotnet build
         # dotnet run
         image: jwas91/csharp:1.0.0
-        build: ./c#
-        working_dir: /work
-        entrypoint: /bin/sh
-        stdin_open: true
-        tty: true
+        build: 
+            context: ./c#
+            target: dev
+        working_dir: /work      # command out for build.target.prod
+        entrypoint: /bin/sh     # command out for build.target.prod
+        stdin_open: true        # command out for build.target.prod
+        tty: true               # command out for build.target.prod
         volumes: 
         -  ./c#/src/:/work
         ports: 
@@ -21,11 +23,13 @@ services:
         # go build
         # go ./work
         image: jwas91/golang:1.0.0
-        build: ./golang
-        working_dir: /work
-        entrypoint: /bin/sh
-        stdin_open: true
-        tty: true
+        build: 
+            context: ./golang
+            target: dev
+        working_dir: /work      # command out for build.target.prod
+        entrypoint: /bin/sh     # command out for build.target.prod
+        stdin_open: true        # command out for build.target.prod
+        tty: true               # command out for build.target.prod
         volumes: 
         -  ./golang/src/:/work
         ports: 
@@ -35,11 +39,13 @@ services:
         # npm install
         # npm start
         image: jwas91/nodejs:1.0.0
-        build: ./nodejs
-        working_dir: /work
-        entrypoint: /bin/sh
-        stdin_open: true
-        tty: true
+        build: 
+            context: ./nodejs
+            target: dev
+        working_dir: /work      # command out for build.target.prod
+        entrypoint: /bin/sh     # command out for build.target.prod
+        stdin_open: true        # command out for build.target.prod
+        tty: true               # command out for build.target.prod
         volumes: 
         -  ./nodejs/src/:/work
         ports: 
@@ -48,11 +54,13 @@ services:
         container_name: python
         # FLASK_APP=server.py flask run -h 0.0.0 -p 5000
         image: jwas91/python:1.0.0
-        build: ./python
-        working_dir: /work
-        entrypoint: /bin/sh
-        stdin_open: true
-        tty: true
+        build: 
+            context: ./python
+            target: dev
+        working_dir: /work      # command out for build.target.prod
+        entrypoint: /bin/sh     # command out for build.target.prod
+        stdin_open: true        # command out for build.target.prod
+        tty: true               # command out for build.target.prod
         volumes: 
         -  ./python/src/:/work
         ports: 
