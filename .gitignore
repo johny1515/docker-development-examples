@@ -1,5 +1,10 @@
+# csharp
 bin
 obj
+# golang
 work
+# nodejs
 package-lock.json
 node_modules
+# python
+__pycache__
