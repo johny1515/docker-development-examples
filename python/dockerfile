@@ -1,4 +1,4 @@
-FROM python:3.7.3-alpine3.9 as dev
+FROM python:3.7.3-alpine3.9 as debug
 
 RUN mkdir /app/
 WORKDIR /app/
