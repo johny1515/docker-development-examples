@@ -17,7 +17,7 @@
                 "quoteArgs": false
             },
             "sourceFileMap": {
-                "/work": "${workspaceRoot}/c#/src/"
+                "/work": "${workspaceRoot}/csharp/src/"
             }
         }
     ]

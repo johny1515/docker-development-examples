@@ -15,13 +15,14 @@ COPY ./src/ /work/
 RUN mkdir /out/
 RUN dotnet publish --no-restore --output /out/ --configuration Release
 
-RUN dotnet run
+ENTRYPOINT ["dotnet", "run"]
+
 ###########START NEW IMAGE###########################################
 
 FROM mcr.microsoft.com/dotnet/core/aspnet:2.2-stretch-slim as prod
 
 RUN mkdir /app/
 WORKDIR /app/
-COPY --from=dev /out/ /app/
+COPY --from=debug /out/ /app/
 RUN chmod +x /app/ 
 CMD dotnet work.dll

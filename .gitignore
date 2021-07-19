@@ -1,6 +1,7 @@
 # csharp
 bin
 obj
+csharp/src/wwwroot
 # golang
 work
 # nodejs
