@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: example-config
+data:
+  config.json: |
+    {
+      "environment" : "dev"
+    }
+# kubectl create configmap example-config --from-file ./golang/configs/config.json
+
+# kubectl apply -f .\kubernetes\configmaps\configmap.yaml
+# kubectl get configmaps
+# kubectl get configmaps example-config -o yaml

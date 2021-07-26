@@ -8,12 +8,13 @@ RUN go get github.com/sirupsen/logrus
 RUN go get github.com/buaazp/fasthttprouter
 RUN go get github.com/valyala/fasthttp
 
-WORKDIR /work
-COPY ./src /work/
+WORKDIR /go/src/work
+COPY ./src /go/src/work/
+
 RUN go build -o app
 
 ######### START NEW IMAGE ###############
 
 FROM alpine:3.9 as prod
-COPY --from=dev /work/app /
+COPY --from=dev /go/src/work/app /
 CMD ./app

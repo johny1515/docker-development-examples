@@ -6,17 +6,31 @@ import (
 	//our web server that will host the mock
 	"github.com/buaazp/fasthttprouter" 
 	"github.com/valyala/fasthttp"
+	"os"
+	"io/ioutil"
 )
 
-var searchMock []byte
+var configuration []byte
+
+func ReadConfig(){
+	fmt.Println("Reading config...")
+	config, e := ioutil.ReadFile("/configs/config.json")
+	if e != nil {
+		fmt.Printf("Error reading cofig file %v\n", e)
+		os.Exit(1)
+	}
+	configuration = config
+	fmt.Println("Config loaded!")
+
+}
 
 func Response(ctx *fasthttp.RequestCtx) {
 	fmt.Fprintf(ctx, "Hello") 
 }
 func main() {
     
-	fmt.Println("starting.")
-
+	fmt.Println("Starting.")
+	//ReadConfig()
 	router := fasthttprouter.New()
 	router.GET("/", Response)
 	

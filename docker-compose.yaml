@@ -10,14 +10,20 @@ services:
         - ./c#/src/:/work/
         ports:
         - 5000:5000
-    golang: # docker run -it -v ${PWD}:/work -w /work -p 5001:5000 jwas91/golang:1.0.0 /bin/sh
+    golang: # docker run -it -v ${PWD}/src:/go/src/work/ -v ${PWD}/configs:/configs -w /go/src/work/ -p 5001:5000 jwas91/golang:1.0.0 /bin/sh
         container_name: golang
         image: jwas91/golang:1.0.0
         build: 
             context: ./golang
             target: debug
+        working_dir: /go/src/work   #comment out for build.target:prod
+        entrypoint: /bin/sh         #comment out for build.target:prod
+        stdin_open: true            #comment out for build.target:prod
+        tty: true                   #comment out for build.target:prod
+        entrypoint: ./app           #comment out for build.target:prod
         volumes: 
-        -  ./golang/src/:/work
+        -  ./golang/src/:/go/src/work/
+        -  ./golang/configs/:/configs/
         ports: 
         -  5001:5000
     nodejs: # docker run -it -v ${PWD}:/work -w /work -p 5002:5000 jwas91/nodejs:1.0.0 /bin/sh
